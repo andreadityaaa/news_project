@@ -3,8 +3,8 @@ const { News, Topic, Tags } = require ('../models')
 class NewsController {
   static read (req, res, next) {
     News.findAll({
-        order: [['id', 'ASC']]
-        // include: { Tags, Topic}
+        order: [['id', 'ASC']],
+        include: [ Tags, Topic ]
     })
     .then(data => {
         if (!data){
@@ -15,12 +15,42 @@ class NewsController {
     .catch(err => {
         next(err)
     })
-}
+  }
 
   static readId (req, res, next) {
     News.findOne({
       where: {
         id: req.params.id
+      }
+    })
+      .then(data => {
+        res.status(200).json(data)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
+
+  static readByStatus (req, res, next) {
+    News.findAll({
+      include: [ Topic, Tags ],
+      where: {
+        status: req.params.status
+      }
+    })
+      .then(data => {
+        res.status(200).json(data)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
+
+  static readByTopic (req, res, next) {
+    News.findAll({
+      include: [ Topic, Tags ],
+      where: {
+        TopicId: req.params.TopicId
       }
     })
       .then(data => {

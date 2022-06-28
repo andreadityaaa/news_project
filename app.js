@@ -6,6 +6,7 @@ const news = require('./routes/news')
 const topic = require('./routes/topic')
 const tags = require('./routes/tags')
 const err = require('./middleware/err')
+
 const PORT = process.env.PORT || 3000
 
 app.use(cors())

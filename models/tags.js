@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Tags.belongsTo(models.News)
+      Tags.belongsTo(models.News)
     }
   }
   Tags.init({
@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
           msg: `Title cannot be empty`
         }
       }
-    }
+    },
+    NewsId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Tags',

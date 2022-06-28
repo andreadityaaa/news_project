@@ -2,20 +2,20 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.addConstraint("News", {
-      fields: ['topicId'],
+    queryInterface.addConstraint('Tags', {
+      fields: ['NewsId'],
       type: 'foreign key',
-      name: 'fkey_topicId',
+      name: 'fkey_newsId',
       references: {
-        table: 'Topics',
+        table: 'News',
         field: 'id'
       },
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE'
-    })
+    });
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeConstraint("News", "fkey_topicId")
+    await queryInterface.removeConstraint("Tags", "fkey_newsId")
   }
 };

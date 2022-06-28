@@ -23,10 +23,7 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      tagsId: {
-        type: Sequelize.INTEGER
-      },
-      topicId: {
+      TopicId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

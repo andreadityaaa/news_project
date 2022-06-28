@@ -3,8 +3,8 @@ const { News, Topic, Tags } = require ('../models')
 class TagsController {
   static read (req, res, next) {
     Tags.findAll({
-        order: [['id', 'ASC']]
-        // include: { Tags, Topic}
+        order: [['id', 'ASC']],
+        include: [ News ]
     })
     .then(data => {
         if (!data){

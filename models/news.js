@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // News.belongsTo(models.Topic)
-      // News.hasMany(models.Tags)
+      News.belongsTo(models.Topic)
+      News.hasMany(models.Tags)
     }
   }
   News.init({
@@ -60,8 +60,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    tagsId: DataTypes.INTEGER,
-    topicId: DataTypes.INTEGER
+    TopicId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'News',
